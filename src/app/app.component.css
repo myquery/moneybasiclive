@@ -1,0 +1,231 @@
+.flex-container{
+    width: 100%;
+    height:100vh;
+
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../assets/images/moneybasic.jpg');
+    background: -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url('../assets/images/moneybasic.jpg');
+    background: -o-linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)) , url('../assets/images/moneybasic.jpg');
+    background: -moz-linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url('../assets/images/moneybasic.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+
+h1{
+    font-size: 3rem;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    
+
+}
+
+.container-header{
+    flex: 0 0 100px;
+    border-bottom: 1px #fff solid;
+   
+    
+}
+.container-body{
+    flex: 1 0 auto;
+  }
+
+.form-body{
+    width: 40%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding:10px;
+    position: relative;
+    margin-top:3%;
+    
+}
+
+.form-body:not(input){
+    opacity: 0.9;
+}
+.formInput{
+   
+    margin-top: 10px;
+}
+button{
+    width: 100%;
+    opacity: 1;
+    background-color: yellowgreen;
+    border: 1px solid yellowgreen;
+}
+
+button:hover{
+    
+    background-color: green;
+    border: 1px solid green;
+}
+.list-inline{
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    list-style:none;
+    display:inline-block
+}
+.list-inline li {
+    justify-content: flex-end
+}
+.list-inline li a{
+    color:white
+    }
+    .list-inline li a:hover{
+        color:#158383
+    }
+
+    .txt-social{
+        position:absolute;
+        font-size:10px;
+        color:#fff !important;
+        top: 2%;
+        right:8%;
+        font-weight:bolder
+    }
+    .errmsg{
+        margin: 5px 0px !important;
+        animation: 1s animErr forwards;
+        height: auto !important;
+        padding: 10px !important;
+    }
+    @keyframes animErr{
+        from{
+            opacity: 0;
+           transform: translateY(-20px) 
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0px)
+        }
+    }
+   .text-logo{
+       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+       font-size: 3rem;
+       font-weight: bolder;
+       float: left;
+       margin-left: 5%;
+       line-height: 55px;
+       
+   }
+   .text-color{
+    color: greenyellow
+   }
+   .siminar-date{
+       background-color: yellowgreen;
+       color: #fff;
+       padding: 10px;
+       line-height: 20px;
+       font-weight: bolder;
+       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+       text-align: center;
+       font-size: 2rem;
+       width: 50%;
+       margin: 0 auto;
+
+
+   }
+   .register{
+       text-align: center;
+       line-height: 20px;
+       font-size: 1.1rem;
+       font-weight: bolder
+
+   }
+   .register:before{
+       content:"----- "
+   }
+   .register:after{
+    content:" -----"
+}
+
+
+.footer-text{
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    width: 50%;
+    border-top: 1px solid #ccc;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 2%;
+
+}
+.interested{
+    width: 70%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding:10px;
+    position: relative;
+    margin-top:3%;
+    font-size: 2rem;
+    opacity: .9
+}
+.fxlearn{
+    background-color:#158383;
+    height: 300px;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.fxlearn2{
+    background-color:#b5e20f;
+    height: 300px;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+.fxheader{
+    text-align: center
+}
+@media(max-width: 400px){
+    .form-body{
+        width: 80%;
+       
+    }
+
+    .siminar-date{
+          width: 80%;
+          font-size: 1rem;
+     
+    }
+
+    .text-logo{
+      
+        font-size: 1.5rem;
+        font-weight: bolder;
+        float: left;
+        margin-left: 5%;
+        line-height: 55px;
+        
+    }
+
+    .list-inline{
+        font-size: 15px;
+         }
+    h1{
+       font-size: 2rem;
+       }
+
+       .form-body{
+     
+        margin-top:6%;
+      
+    }
+
+    .fxlearn{
+        
+        height: auto;
+            }
+    
+
+    
+
+}
