@@ -28,10 +28,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
    this.moneyForm = this.fb.group({
-    'name': ['', Validators.required],
-    'email': ['', Validators.required],
-    'phone' : ['', Validators.required],
-    'bookSeat': ''
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone : ['', Validators.required],
+      bookSeat: ''
   })
 
   this.participant = this.afDB.list('/participants')
@@ -41,10 +41,19 @@ export class AppComponent implements OnInit {
     this.name = value.name
     this.bookSeat = value.bookSeat
 
-    let pinId = Math.floor(Math.random()*9000000 + 1000000);
-    
-    this.participant.push({ participant: value, registrationDate: Date.now(), uniqueId : pinId });
-    console.log(this.participant)
+    const {name, email, phone, bookSeat} = value;
+    const date = Date();
+    const pinId = Math.floor(Math.random()*9000000 + 1000000);
+
+     const html = `
+      <div>From: ${name}</div>
+      <div>Email: <a href="mailto:${email}">${email}</a></div>
+      <div>Reservatiion Code: ${pinId}</div>
+      <div>Phone Number: ${phone}</div>
+    `;
+    let formRequest = { name, email, phone, bookSeat, date, pinId, html };
+    this.participant.push(formRequest);
+    // console.log(this.participant)
    
   }
 

@@ -221,9 +221,18 @@ button:hover{
     }
 
     .fxlearn{
-        
-        height: auto;
-            }
+    
+        font-size: 1.1rem;
+    }
+    
+    .fxlearn2{
+     
+        font-size: 1.1rem;
+    }
+    .fxheader{
+        text-align: center;
+        font-size: 1.2rem;
+    }
     
 
     
