@@ -185,7 +185,69 @@ button:hover{
 .fxheader{
     text-align: center
 }
-@media(max-width: 400px){
+@media(max-width: 600px){
+    .form-body{
+        width: 80%;
+       
+    }
+
+    .siminar-date{
+          width: 80%;
+          font-size: 1rem;
+     
+    }
+
+    .text-logo{
+      
+        font-size: 1.5rem;
+        font-weight: bolder;
+        float: left;
+        margin-left: 5%;
+        line-height: 55px;
+        
+    }
+
+    .list-inline{
+        font-size: 15px;
+         }
+    h1{
+       font-size: 2rem;
+       }
+
+       .form-body{
+     
+        margin-top:6%;
+      
+    }
+
+    .fxlearn{
+    
+        font-size: 1.1rem;
+        height:auto;
+    }
+    
+    .fxlearn2{
+     
+        font-size: 1.1rem;
+        height:auto;
+    }
+    .fxheader{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+
+    
+    .footer-text{
+       background-color: yellowgreen;
+       width: 100% !important;
+       padding-bottom: 15px;
+       margin-top: 10px !important;
+    
+    }
+}
+
+@media(min-width:  600px ){
     .form-body{
         width: 80%;
        
