@@ -1,15 +1,27 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
 const functions = require('firebase-functions');
-
-// The Firebase Admin SDK to access the Firebase Realtime Database. 
-const admin = require('firebase-admin');
-admin.initializeApp(functions.config().firebase);
-
 const nodemailer = require('nodemailer');
-const gmailEmail = encodeURIComponent(functions.config().gmail.email);
-const gmailPassword = encodeURIComponent(functions.config().gmail.password);
-const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
-
+// Configure the email transport using the default SMTP transport and a GMail account.
+// For other types of transports such as Sendgrid see https://nodemailer.com/transports/
+// TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
+const gmailEmail = functions.config().gmail.email;
+const gmailPassword = functions.config().gmail.password;
 const mailTransport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -18,24 +30,30 @@ const mailTransport = nodemailer.createTransport({
   },
 });
 
-exports.sendContactMessage = functions.database.ref('/participants/{pushKey}').onWrite(event => {
-  const snapshot = event.data;
-// Only send email for new messages.
-  if (snapshot.previous.val() || !snapshot.val().name) {
-    return;
-  }
-  
+// Sends an email confirmation when a user changes his mailing list subscription.
+exports.sendEmailConfirmation = functions.database.ref('/participants/{uid}').onWrite((change) => {
+  const snapshot = change.after;
   const val = snapshot.val();
 
+  if (!snapshot.changed('subscribedToMailingList')) {
+    return null;
+  }
+
   const mailOptions = {
-    from: val.email,
-    to: 'stanrua@aol.com',
-    subject: `New Registration from. ${val.name}`,
-    text: `Your message content. \n 
-          Sender's Name: ${val.name} \n
-          Content: ${val.html}`
+    from: '"Rosaline Obianaju." <noreply@moneybasic.net.com>',
+    to: val.email,
   };
-  return mailTransport.sendMail(mailOptions).then(() => {
-    return console.log('Mail sent'); //The log will be shown in Firebase.
-  });
+
+  const subscribed = val.subscribedToMailingList;
+
+  // Building Email message.
+  mailOptions.subject = subscribed ? 'Thanks and Welcome!' : 'Sad to see you go :`(';
+  mailOptions.text = subscribed ?
+      'Thanks you for signing up. You will receive our next weekly newsletter on financial market and the internet' :
+      'I hereby confirm that I will stop sending you the newsletter.';
+
+  return mailTransport.sendMail(mailOptions)
+    .then(() => console.log(`New ${subscribed ? '' : 'un'}subscription confirmation email sent to:`,
+        val.email))
+    .catch((error) => console.error('There was an error while sending the email:', error));
 });
