@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
+import { HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -9,6 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrantComponent } from './registrant/registrant.component';
 import { ListRegistrantComponent } from './admin/list-registrant/list-registrant.component';
@@ -36,7 +38,9 @@ export const firebaseConfig = {
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule,
+    AppRoutingModule
 
   ],
   providers: [],
