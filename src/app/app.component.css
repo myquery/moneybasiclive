@@ -223,11 +223,13 @@ button:hover{
     .fxlearn{
     
         font-size: 1.1rem;
+        height:auto;
     }
     
     .fxlearn2{
      
         font-size: 1.1rem;
+        height:auto;
     }
     .fxheader{
         text-align: center;
@@ -236,5 +238,11 @@ button:hover{
     
 
     
-
+    .footer-text{
+       background-color: yellowgreen;
+       width: 100% !important;
+       padding-bottom: 15px;
+       margin-top: 10px !important;
+    
+    }
 }
