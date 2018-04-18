@@ -1,3 +1,36 @@
-<p>
-  list-registrant works!
-</p>
+<div class="container">
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">List of Registrants</h3>
+    <div class="box-tools pull-right">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      
+    </div>
+    <!-- /.box-tools -->
+  </div>
+  <!-- /.box-header -->
+ 
+  <ul class="list-group">
+    <li  *ngFor="let list of participant | async" class="list-group-item">
+      {{list.name}}
+      <br/><i class="label label-default font-email">{{list.email}}</i> 
+         
+        <span class="badge">
+          <a [href] ="callme">
+          {{list.phone}}
+          </a>
+        </span>
+      
+      
+    </li>
+    
+  </ul>
+  <!-- /.box-body -->
+ 
+  <!-- box-footer -->
+</div>
+</div>
+ <div class="box-footer">
+    The footer of the box
+  </div>

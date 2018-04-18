@@ -13,6 +13,12 @@
     
 }
 
+a{
+    color: #fff
+}
+a:hover{
+    color: yellowgreen
+}
 h1{
     font-size: 3rem;
     color: #fff;
@@ -32,7 +38,7 @@ h1{
     flex: 1 0 auto;
   }
 
-.form-body{
+.formInput{
     width: 40%;
     border-radius: 5px;
     background-color: #fff;
@@ -43,7 +49,7 @@ h1{
     
 }
 
-.form-body:not(input){
+.formInput:not(input){
     opacity: 0.9;
 }
 .formInput{
@@ -186,7 +192,7 @@ button:hover{
     text-align: center
 }
 @media(max-width: 600px){
-    .form-body{
+    .formInput{
         width: 80%;
        
     }
@@ -248,7 +254,7 @@ button:hover{
 }
 
 @media(min-width:  600px ){
-    .form-body{
+    .formInput{
         width: 50%;
        
     }

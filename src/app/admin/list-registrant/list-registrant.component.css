@@ -1,0 +1,22 @@
+a{
+    color: #fff;
+
+}
+
+a:hover{
+    color: #f3f3f3;
+
+}
+
+
+.box-footer{
+    background-color: yellowgreen;
+    color: #333;
+    width: 100% !important
+
+
+}
+
+.font-email{
+    font-size: 1rem
+}

@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { RegistrantComponent } from './registrant/registrant.component';
 import { ListRegistrantComponent } from './admin/list-registrant/list-registrant.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import {AdminComponent} from './admin/admin.component'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCJBDrlPWI1HbkA3GG6O3RKw4dKJRWA6ho",
@@ -30,7 +31,8 @@ export const firebaseConfig = {
     AppComponent,
     RegistrantComponent,
     ListRegistrantComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
