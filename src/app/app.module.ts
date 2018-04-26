@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common'
 import { NgModule} from '@angular/core';
 import { HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from '@angular/forms';
@@ -13,9 +14,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrantComponent } from './registrant/registrant.component';
-import { ListRegistrantComponent } from './admin/list-registrant/list-registrant.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import {AdminComponent} from './admin/admin.component'
+import {AdminModule} from './admin/admin.module'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCJBDrlPWI1HbkA3GG6O3RKw4dKJRWA6ho",
@@ -30,9 +30,7 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     RegistrantComponent,
-    ListRegistrantComponent,
-    AdminloginComponent,
-    AdminComponent
+    AdminloginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +40,13 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
 
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy, useClass : HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,28 +13,60 @@ import * as firebase from 'firebase/app';
 export class ListRegistrantComponent implements OnInit {
   participant : Observable<any>;
   regUsers : any
-  callme :  string           
+  callme           
   constructor(private afDB : AngularFireDatabase ) { 
-     
-
-    
-     
+    //this.callme = ''
   }
   
 
   ngOnInit() {
-    
-    this.participant = this.afDB.list('/participants').valueChanges()
-    this.participant.switchMap(users => users)
-        .subscribe( (users) =>  {
-           this.regUsers = users
-           this.callme = `tel:+234${this.regUsers.phone}`
-             })
-   
 
-    
+    //this.callme = []
+ 
+    this.participant = this.afDB.list('/participants').valueChanges()
+    this.participant.map(users => users )
+    .subscribe((user) => {
+      this.regUsers = user
+     var i =0
+     for (i = 0; i < this.regUsers.length; i++) {
+       (function(j){
+         this.callme = `tel:+234${this.regUsers[j].phone}` 
+       }).bind(this, i)
+
+        return this.callme;
+          }
+    })
+
    
     
   }
+
+  showNum (j){
+    let x = j
+    return function(){
+     return this.callme = `tel:+234${this.regUsers[x].phone}` 
+    }
+   
+   
+ }
+
+
+//  getNumber(num){
+//       (function(){
+//      this.callme = `tel:+234${this.regUsers[num].phone}`
+//       }).bind(this)
+       
+      
+//     }
+
+// getNumId(){
+
+//   for (var i = 0; i < this.regUsers.length; i++) {
+//     this.getNumber(i)
+         
+//     }
+
+// }
+
 
 }

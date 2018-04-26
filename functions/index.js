@@ -17,43 +17,56 @@
 
 const functions = require('firebase-functions');
 const nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 // Configure the email transport using the default SMTP transport and a GMail account.
 // For other types of transports such as Sendgrid see https://nodemailer.com/transports/
 // TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
 const gmailEmail = functions.config().gmail.email;
 const gmailPassword = functions.config().gmail.password;
-const mailTransport = nodemailer.createTransport({
+const mailTransport = nodemailer.createTransport(smtpTransport({
   service: 'gmail',
   auth: {
     user: gmailEmail,
-    pass: gmailPassword,
-  },
-});
+    pass: gmailPassword
+  }
+}));
 
-// Sends an email confirmation when a user changes his mailing list subscription.
+// Sends an email confirmation when a user registeres.
 exports.sendEmailConfirmation = functions.database.ref('/participants/{uid}').onWrite((change) => {
   const snapshot = change.after;
   const val = snapshot.val();
 
-  if (!snapshot.changed('subscribedToMailingList')) {
-    return null;
-  }
-
   const mailOptions = {
-    from: '"Rosaline Obianaju." <noreply@moneybasic.net.com>',
+    from: 'Rosaline Obianuju. <noreply@moneybasic.net.com>',
     to: val.email,
+    subject: `Welcome, ${val.name} to Money Basic` ,
+    html: val.html
   };
 
-  const subscribed = val.subscribedToMailingList;
 
-  // Building Email message.
-  mailOptions.subject = subscribed ? 'Thanks and Welcome!' : 'Sad to see you go :`(';
-  mailOptions.text = subscribed ?
-      'Thanks you for signing up. You will receive our next weekly newsletter on financial market and the internet' :
-      'I hereby confirm that I will stop sending you the newsletter.';
 
   return mailTransport.sendMail(mailOptions)
-    .then(() => console.log(`New ${subscribed ? '' : 'un'}subscription confirmation email sent to:`,
+    .then(() => console.log(`New Registrant confirmation email sent to:`,
+        val.email))
+    .catch((error) => console.error('There was an error while sending the email:', error));
+});
+
+// Sends an email confirmation to Admin to notify he(r).
+exports.sendAdminEmailConfirmation = functions.database.ref('/participants/{uid}').onWrite((change) => {
+  const snapshot = change.after;
+  const val = snapshot.val();
+
+
+  const mailOptions = {
+      to: "reoebun@gmail.com, stanarua@aol.com, nsachaa@gmail.com",
+      subject: "A New Registrant just signed up!",
+      text: `Hey ${val.name} just joined the platform you can call. You can manage the registrant by logging in into the app or just send a direct mail to ${val.email}`
+
+  };
+
+
+  return mailTransport.sendMail(mailOptions)
+    .then(() => console.log(`Confirmation email sent to: reoebun@gmail.com`,
         val.email))
     .catch((error) => console.error('There was an error while sending the email:', error));
 });

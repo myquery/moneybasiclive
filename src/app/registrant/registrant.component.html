@@ -28,9 +28,9 @@
       
      
     
-         <form  class="formInput" [formGroup]="moneyForm" (ngSubmit) ="addParticipant(moneyForm.value); moneyForm.reset()" >
+         <form  class="formInput" [formGroup]="moneyForm" (ngSubmit) ="addParticipant(moneyForm.value, e); moneyForm.reset()" >
           <p class="register">Don't miss this, Register to Attend</p>
-          <div class="form-group row">
+           <div class="form-group row">
                <label for="name" class="col-sm-2 col-form-label">FullName</label>
                <div class="col-sm-10">
                  <input type="email" class="form-control" id="name" placeholder="Your Fullname" formControlName="name">
@@ -97,14 +97,7 @@
                  <li>Live Prices</li>
                  <li>Create Multiple streams of Income</li>
                </ul>
-               <p>TO PARTICIPATE IN A MONEY BASIC SIMINAR/WORKSHOP</p>
-               <span>20% Payment of #100,000.00 is required to reserve a seat for you</span>
-               <span>Make Payment to: <strong>Astan Technologies Nigeria Limited </strong> </span>
-               <ul>
-                 <li>Account Number: 0114279739</li>
-                 <li>Account Bank: GTBank</li>
-                 <li>Swift Code: GTBINGLA</li>
-               </ul>
+              
                
              </div>
            

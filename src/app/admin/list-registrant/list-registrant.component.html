@@ -1,6 +1,6 @@
 <div class="container">
 <div class="box">
-  <div class="box-header with-border">
+  <div class="box-header with-border reghead">
     <h3 class="box-title">List of Registrants</h3>
     <div class="box-tools pull-right">
       <!-- Buttons, labels, and many other things can be placed here! -->
@@ -12,7 +12,7 @@
   <!-- /.box-header -->
  
   <ul class="list-group">
-    <li  *ngFor="let list of participant | async" class="list-group-item">
+    <li  *ngFor="let list of regUsers" class="list-group-item">
       {{list.name}}
       <br/><i class="label label-default font-email">{{list.email}}</i> 
          

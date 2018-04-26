@@ -3,15 +3,13 @@ import { RouterModule, PreloadAllModules} from '@angular/router';
 import { NgModule } from '@angular/core';
 import {RegistrantComponent} from './registrant/registrant.component';
 import {AdminloginComponent} from './adminlogin/adminlogin.component';
-import {ListRegistrantComponent} from './admin/list-registrant/list-registrant.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       { path: '', redirectTo: 'registrant', pathMatch: 'full' },
       { path: 'registrant', component: RegistrantComponent },
-      {path: 'adminlogin',  component: AdminloginComponent},
-      {path : 'admin', component: ListRegistrantComponent }
+      {path: 'adminlogin',  component: AdminloginComponent}
     ], {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
