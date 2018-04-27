@@ -4,6 +4,7 @@ import { NgModule} from '@angular/core';
 import { HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -41,7 +42,8 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     HttpModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    SlimLoadingBarModule.forRoot()
 
   ],
   providers: [{

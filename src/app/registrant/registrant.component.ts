@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import {Participant} from '../participant'
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 
 @Component({
@@ -27,12 +28,12 @@ export class RegistrantComponent  implements OnInit {
   
 
 
-  constructor(public fb: FormBuilder, private afDB : AngularFireDatabase ){
+  constructor(public fb: FormBuilder, private afDB : AngularFireDatabase, private loader: SlimLoadingBarService){
    
   }
 
   ngOnInit(){
-   
+    this.loadIndicator()
    this.moneyForm = this.fb.group({
       
       name: ['', Validators.required],
@@ -80,6 +81,14 @@ export class RegistrantComponent  implements OnInit {
     // console.log(this.participant)
    
   }
+
+
+ loadIndicator(){
+  this.loader.start()
+}
+endIndicator(){
+ this.loader.complete() 
+}
 
   
 }

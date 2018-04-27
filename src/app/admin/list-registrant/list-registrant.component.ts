@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router'
 import { AngularFireObject, AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-list-registrant',
@@ -13,60 +15,52 @@ import * as firebase from 'firebase/app';
 export class ListRegistrantComponent implements OnInit {
   participant : Observable<any>;
   regUsers : any
-  callme           
-  constructor(private afDB : AngularFireDatabase ) { 
+  callme  : any
+  smsme : any         
+  constructor(private afDB : AngularFireDatabase, private router: Router, private loader: SlimLoadingBarService) { 
     //this.callme = ''
   }
   
 
   ngOnInit() {
-
+    this.loadIndicator()
     //this.callme = []
  
     this.participant = this.afDB.list('/participants').valueChanges()
     this.participant.map(users => users )
     .subscribe((user) => {
+      
       this.regUsers = user
-     var i =0
-     for (i = 0; i < this.regUsers.length; i++) {
-       (function(j){
-         this.callme = `tel:+234${this.regUsers[j].phone}` 
-       }).bind(this, i)
+      this.endIndicator()
+          var i = 0
+          //var reg = this.regUsers.length
+          for(i = 0; i < this.regUsers.length; i++){
 
-        return this.callme;
-          }
+              this.callme = `tel:+234${this.regUsers[i].phone}` 
+              //this.smsme = `sms:+234${this.regUsers[i].phone}` 
+           }
+
+
+
     })
 
    
     
   }
 
-  showNum (j){
-    let x = j
-    return function(){
-     return this.callme = `tel:+234${this.regUsers[x].phone}` 
-    }
-   
+  signOut (){
+  this.router.navigate(['/'])
    
  }
 
+ loadIndicator(){
+  this.loader.start()
+}
+endIndicator(){
+ this.loader.complete() 
+}
 
-//  getNumber(num){
-//       (function(){
-//      this.callme = `tel:+234${this.regUsers[num].phone}`
-//       }).bind(this)
-       
-      
-//     }
 
-// getNumId(){
-
-//   for (var i = 0; i < this.regUsers.length; i++) {
-//     this.getNumber(i)
-         
-//     }
-
-// }
 
 
 }

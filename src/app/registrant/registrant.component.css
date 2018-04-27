@@ -193,140 +193,65 @@ button:hover{
     text-align: center
 }
 
-@media(max-width: 500px){
+@media(min-width : 320px) and (max-width : 480px) {
     .formInput{
-        width: 85%;
+        width: 80%;
        
     }
 
     .siminar-date{
           width: 80%;
-          font-size: 1rem;
+          font-size: 1.2rem;
      
     }
 
-    .text-logo{
-      
-        font-size: 1.2rem;
-        font-weight: bolder;
-        float: left;
-        margin-left: 5%;
-        line-height: 55px;
-        
-    }
-
-    .list-inline{
-        font-size: 15px;
-         }
-    h1{
-       font-size: 2rem;
-       }
-
-       .form-body{
-     
-        margin-top:6%;
-      
-    }
-
-    .fxlearn{
-    
-        font-size: 1.1rem;
-        height:auto;
-    }
-    
-    .fxlearn2{
-     
-        font-size: 1.1rem;
-        height:auto;
-    }
-    .fxheader{
-        text-align: center;
-        font-size: 1.2rem;
-    }
-    
-
-    
-    .footer-text{
-       background-color: yellowgreen;
-       width: 100% !important;
-       padding-bottom: 15px;
-       margin-top: 10px !important;
-    
-    }
-}
-
-
-@media all and (max-width: 800px) {
-
-    .formInput{
-        width: 65%;
-       
-    }
-
-    .txt-social{
-      
-        font-size:14px;
-       
-    }
-
-    .list-inline li{
-        font-size: 2rem;
-        
-    }
-
-
-    .siminar-date{
-          width: 80%;
-          font-size: 1.5rem;
-     
-    }
-
-    .text-logo{
-      
-        font-size: 2rem;
-        font-weight: bolder;
-        float: left;
-        margin-left: 5%;
-        line-height: 55px;
-        
-    }
-
-    .list-inline{
-        font-size: 15px;
-         }
-    h1{
-       font-size: 3rem;
-       }
-
-       .form-body{
-     
-        margin-top:6%;
-      
-    }
-
-    .fxlearn{
-    
-        font-size: 1.1rem;
-        height:auto;
-    }
-    
-    .fxlearn2{
-     
-        font-size: 1.1rem;
-        height:auto;
-    }
-    .fxheader{
-        text-align: center;
-        font-size: 1.2rem;
-    }
-    
     .register{
-        text-align: center;
-        line-height: 20px;
-        font-size: 1.5rem;
-        font-weight: bolder
- 
+    
+       font-size: 1.3rem;
+      
+
+   }
+
+    .text-logo{
+      
+        font-size: 1.2rem;
+        font-weight: bolder;
+        float: left;
+        margin-left: 5%;
+        line-height: 55px;
+        
     }
+
+    .list-inline{
+        font-size: 15px;
+         }
+    h1{
+       font-size: 2.3rem;
+       }
+
+       .form-body{
+     
+        margin-top:6%;
+      
+    }
+
+    .fxlearn{
+    
+        font-size: 1.1rem;
+        height:auto;
+    }
+    
+    .fxlearn2{
+     
+        font-size: 1.1rem;
+        height:auto;
+    }
+    .fxheader{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+
     
     .footer-text{
        background-color: yellowgreen;
@@ -335,8 +260,7 @@ button:hover{
        margin-top: 10px !important;
     
     }
-   
-    
 }
+
 
 

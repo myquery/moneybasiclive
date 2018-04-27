@@ -58,7 +58,7 @@ exports.sendAdminEmailConfirmation = functions.database.ref('/participants/{uid}
 
 
   const mailOptions = {
-      to: "reoebun@gmail.com, stanarua@aol.com, nsachaa@gmail.com",
+      to: "[reoebun@gmail.com, stanarua@aol.com, nsachaa@gmail.com]",
       subject: "A New Registrant just signed up!",
       text: `Hey ${val.name} just joined the platform you can call. You can manage the registrant by logging in into the app or just send a direct mail to ${val.email}`
 

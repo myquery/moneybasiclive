@@ -2,23 +2,23 @@
 <div class="box">
   <div class="box-header with-border reghead">
     <h3 class="box-title">List of Registrants</h3>
-    <div class="box-tools pull-right">
-      <!-- Buttons, labels, and many other things can be placed here! -->
-      <!-- Here is a label for example -->
+    
+      <button class="btn btn-primary small-btn pull-right" (click)="signOut()">Sign Out</button>
       
-    </div>
+   
     <!-- /.box-tools -->
   </div>
+  <ng2-slim-loading-bar [color]="'yellowgreen'" ></ng2-slim-loading-bar>
   <!-- /.box-header -->
  
   <ul class="list-group">
     <li  *ngFor="let list of regUsers" class="list-group-item">
       {{list.name}}
-      <br/><i class="label label-default font-email">{{list.email}}</i> 
+      <br/><span class="label label-default"><i  class="fa fa-envelope"> {{list.email}}</i> </span>
          
         <span class="badge">
           <a [href] ="callme">
-          {{list.phone}}
+            <i  class="fa fa-phone"> {{list.phone}}</i>
           </a>
         </span>
       
@@ -32,5 +32,6 @@
 </div>
 </div>
  <div class="box-footer">
-    The footer of the box
+   <div class="footer-tex">&#169;Copyright: Money Basic Inc. All Right Reserved </div>
+    
   </div>
